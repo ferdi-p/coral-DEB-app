@@ -16,6 +16,24 @@ ui.image(fig)  # quick placeholder, or replace with your NiceGUI UI code
 port = int(os.getenv('PORT', 8000))
 ui.run(host='0.0.0.0', port=port, reload=False, title='Coral Heat Stress')
 
+# # main.py
+# import os
+# from nicegui import ui
+# from parameters import default_params, drivers_from_params
+# from plotting import plot_panel
+#
+# # import your simulation helpers
+# params = default_params()
+# drivers = drivers_from_params(params)
+#
+# # Run a simple initial figure (optional)
+# fig, _ = plot_panel(params, drivers=drivers, show=False)
+# ui.image(fig)  # quick placeholder, or replace with your NiceGUI UI code
+#
+# # Start NiceGUI on the port Render provides
+# port = int(os.getenv('PORT', 8000))
+# ui.run(host='0.0.0.0', port=port, reload=False, title='Coral Heat Stress')
+
 
 # # coral_heat_app_single.py
 # # Coral heat-stress model (4 ODEs) + automatic rule expansion + quick plot check.
