@@ -95,3 +95,8 @@ for el in (
 run_simulation()
 
 ui.run(title='Coral Heat Stress (NiceGUI)', reload=False)
+
+# nicegui_app.py (end of file)
+import os
+port = int(os.getenv('PORT', 8000))  # Render sets $PORT
+ui.run(host='0.0.0.0', port=port, reload=False, title='Coral Heat Stress (NiceGUI)')
