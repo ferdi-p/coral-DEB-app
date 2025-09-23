@@ -1,9 +1,8 @@
+# Dockerfile
 FROM python:3.11-slim
 
-# helpful libs for matplotlib on servers
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential libglib2.0-0 libsm6 libxext6 libxrender1 \
- && rm -rf /var/lib/apt/lists/*
+# (Optional) If you need SciPy wheels, the slim image can build them; uncomment if needed:
+# RUN apt-get update && apt-get install -y --no-install-recommends build-essential gfortran && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 COPY requirements.txt .
@@ -11,4 +10,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 ENV PORT=8080
-CMD ["python", "nicegui_app.py"
+
+# safer: non-root user
+RUN useradd -m appuser
+USER appuser
+
+EXPOSE 8080
+CMD ["python", "main.py"]
